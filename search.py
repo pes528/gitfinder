@@ -154,7 +154,7 @@ def main() -> None:
     repositorio = input("BUSCAR---> ")
     if repositorio == "0":
         os.system("clear")
-        print("saliste")
+        print("Saliste, para volver a iniciar escribe: python search.py")
     else:
         gitt = searchGitt(repositorio)
         gitt.buscarRepos()
