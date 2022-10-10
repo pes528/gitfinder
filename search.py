@@ -171,6 +171,7 @@ def main() -> None:
             while gitt.repositoriosActuales < gitt.totalRepos:
                 print("—"*40)
                 print(f"TOTAL RESPOSITORIOS VISTOS --> \033[1;31m {gitt.repositoriosActuales}\033[0m \nQUEDAN POR VER --> \033[1;31m{gitt.totalRepos-gitt.repositoriosActuales}\033[0m \n")
+                sleep(3)
                 u = input("Preciona enter para continuar\nPreciona 0 para volver\nOpcion-> : ")
                 if u == "0":
                     return main()
