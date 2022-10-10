@@ -21,7 +21,7 @@ import lxml.html as html
 #--------------------------------------
 
 
-
+green = "\033[1;32m"
 rojito = "\033[1;34m"
 fin = "\033[0m"
 
@@ -102,7 +102,7 @@ class searchGitt():
     
     def viewResult(self):
         for i in self.resp:
-            print("---> https://github.com"+i)
+            print(f"---> {green}https://github.com{i}{fin}")
     
     def secondPage(self):
         resp = html.fromstring(self.bodyMain)
@@ -117,7 +117,7 @@ class searchGitt():
             self.resp = parse.xpath(self.links)
             self.repositoriosActuales += len(self.resp)
             for i in self.resp:
-                print("---> https://github.com"+i)
+                print(f"---> {green}https://github.com{i}{fin}")
         
     def otherPages(self, num):
         answer = self.answer.replace(" ", "+")
@@ -125,7 +125,7 @@ class searchGitt():
         otros = others(other, self.links)
         self.repositoriosActuales += len(otros)
         for i in otros:
-            print("---> https://github.com"+i)
+            print(f"---> {green}https://github.com{i}{fin}")
 
 
 #https://github.com/search?p=2&q=asd&ref=simplesearch&type=Repositories
