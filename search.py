@@ -60,7 +60,7 @@ def others(link, search) -> list:
         
 
 
-class searchGit():
+class searchGitt():
     
     linkSegundaPagina = ""
     bodyMain = ""
@@ -156,32 +156,32 @@ def main() -> None:
         os.system("clear")
         print("saliste")
     else:
-        git = searchGit(repositorio)
-        git.buscarRepos()
-        print(f"TOTAL ENCONTRADOS PARA [{rojito}{git.answer}{fin}] --> {rojito}{git.totalRepos}{fin}")
-        git.viewResult()
+        gitt = searchGitt(repositorio)
+        gitt.buscarRepos()
+        print(f"TOTAL ENCONTRADOS PARA [{rojito}{gitt.answer}{fin}] --> {rojito}{gitt.totalRepos}{fin}")
+        gitt.viewResult()
         print("")
-        paginasTotales = git.totalRepos/10
+        paginasTotales = gitt.totalRepos/10
         numPag = 3
         contRepos = 0
     
-        if git.totalRepos > 10:
-            git.secondPage()
+        if gitt.totalRepos > 10:
+            gitt.secondPage()
 
-            while git.repositoriosActuales < git.totalRepos:
+            while gitt.repositoriosActuales < gitt.totalRepos:
                 print("—"*40)
-                print(f"TOTAL RESPOSITORIOS VISTOS --> \033[1;31m {git.repositoriosActuales}\033[0m \nQUEDAN POR VER --> \033[1;31m{git.totalRepos-git.repositoriosActuales}\033[0m \n")
+                print(f"TOTAL RESPOSITORIOS VISTOS --> \033[1;31m {gitt.repositoriosActuales}\033[0m \nQUEDAN POR VER --> \033[1;31m{gitt.totalRepos-gitt.repositoriosActuales}\033[0m \n")
                 u = input("Preciona enter para continuar\nPreciona 0 para volver\nOpcion-> : ")
                 if u == "0":
                     return main()
                 else:
-                    git.otherPages(numPag)
+                    gitt.otherPages(numPag)
                     numPag += 1
             print("Llegaste al final 😉 ")
             input("Preciona cualquier tecla para volver: ")
             main()
-        elif git.totalRepos < 10:
-            git.secondPage()
+        elif gitt.totalRepos < 10:
+            gitt.secondPage()
             input("Preciona enter para volver: ")
             main()
 
