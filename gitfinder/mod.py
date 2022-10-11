@@ -7,7 +7,7 @@ try:
     import requests
 except Exception as f:
     print(f)
-    print("Instalando.......")
+    print("Instalando paquetes necesario espera porfavor.......\n\n")
     os.system("pip install mechanicalsoup")
     os.system("pip install lxml")
 import mechanicalsoup
