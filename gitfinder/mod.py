@@ -15,6 +15,9 @@ import requests
 import lxml.html as html
 
 green = "\033[1;32m"
+rojito = "\033[1;34m"
+fin = "\033[0m"
+
 
 def total(text:str) -> int:
     numero=[]
