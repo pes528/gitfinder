@@ -29,8 +29,6 @@ def verifi(lista : list) -> bool:
 
 
 
-#https://github.com/search?p=2&q=asd&ref=simplesearch&type=Repositories
-
 def logo():
     print("""
 ░██████╗░██╗████████╗██╗░░██╗██╗░░░██╗██████╗░
@@ -40,7 +38,7 @@ def logo():
 ╚██████╔╝██║░░░██║░░░██║░░██║╚██████╔╝██████╦╝
 ░╚═════╝░╚═╝░░░╚═╝░░░╚═╝░░╚═╝░╚═════╝░╚═════╝░\n""")
     print("\033[1;101m                    𝙎𝙀𝘼𝙍𝘾𝙃                \033[0m")
-    print("                   𝗯𝘆 @𝗽𝗲𝘀𝟱𝟮𝟴 	\n")
+    print("                 𝗯𝘆 Telegram:@𝗽𝗲𝘀𝟱𝟮𝟴 	\n")
     print("""
     ----------------------------------------
     Encuentra repositorios alojados en github
@@ -55,7 +53,7 @@ def main() -> None:
     repositorio = input("BUSCAR---> ")
     if repositorio == "0":
         os.system("clear")
-        print("saliste")
+        print("Saliste, para volver a iniciar escribe: python search.py")
     else:
         gitt = searchGitt(repositorio)
         gitt.buscarRepos()
@@ -72,6 +70,7 @@ def main() -> None:
             while gitt.repositoriosActuales < gitt.totalRepos:
                 print("—"*40)
                 print(f"TOTAL RESPOSITORIOS VISTOS --> \033[1;31m {gitt.repositoriosActuales}\033[0m \nQUEDAN POR VER --> \033[1;31m{gitt.totalRepos-gitt.repositoriosActuales}\033[0m \n")
+                sleep(3)
                 u = input("Preciona enter para continuar\nPreciona 0 para volver\nOpcion-> : ")
                 if u == "0":
                     return main()
@@ -90,5 +89,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
