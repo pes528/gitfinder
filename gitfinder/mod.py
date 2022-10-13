@@ -7,17 +7,42 @@ try:
     import requests
 except Exception as f:
     print(f)
-    print("Instalando paquetes necesario espera porfavor.......\n\n")
+    print("Instalando.......")
     os.system("pip install mechanicalsoup")
     os.system("pip install lxml")
-    os.system("pip install requests")
 import mechanicalsoup
 import requests 
 import lxml.html as html
 
+
 green = "\033[1;32m"
 rojito = "\033[1;34m"
 fin = "\033[0m"
+
+
+
+
+def verifi(text: str) -> bool: #Si retorna False, se debe cambiar la expresion xpath
+    try:
+        numero=[]
+  
+        for i in text:
+            e = text.replace("\n", "")
+        e = text.replace("\v", "")
+        e = text.replace(",", "")
+    
+        for j in e.split():
+            try:
+                int(j)
+                numero.append(j)
+            except:
+                pass
+        return int(numero[0])
+    except:
+        return False
+
+
+
 
 
 def total(text:str) -> int:
@@ -44,9 +69,6 @@ def others(link, search) -> list:
     parser = html.fromstring(body)
     resp = parser.xpath(search)
     return resp
-        
-
-
 class searchGitt():
     
     linkSegundaPagina = ""
@@ -81,15 +103,22 @@ class searchGitt():
         self.resp = parser.xpath(self.links)
         tot = parser.xpath('//div[@class="d-flex flex-column flex-md-row flex-justify-between border-bottom pb-3 position-relative"]/h3/text()')
         if tot:
-            self.totalRepos = total(tot[0])
+            if verifi(tot[0]) == False:
+                tot = parser.xpath('//span[@class="v-align-middle"]//text()')
+                self.totalRepos = total(tot[0])
+            else:
+
+                self.totalRepos = total(tot[0])
+            
+            
             self.repositoriosActuales = len(self.resp)
             if self.totalRepos > 10:
                 
                 self.morePage = True
-    
+        
     def viewResult(self):
         for i in self.resp:
-            print(f"---> {green}https://github.com{i}{fin}")
+            print("---> https://github.com"+i)
     
     def secondPage(self):
         resp = html.fromstring(self.bodyMain)
@@ -104,7 +133,7 @@ class searchGitt():
             self.resp = parse.xpath(self.links)
             self.repositoriosActuales += len(self.resp)
             for i in self.resp:
-                print(f"---> {green}https://github.com{i}{fin}")
+                print("---> https://github.com"+i)
         
     def otherPages(self, num):
         answer = self.answer.replace(" ", "+")
@@ -112,4 +141,4 @@ class searchGitt():
         otros = others(other, self.links)
         self.repositoriosActuales += len(otros)
         for i in otros:
-            print(f"---> {green}https://github.com{i}{fin}")
+            print("---> https://github.com"+i)
