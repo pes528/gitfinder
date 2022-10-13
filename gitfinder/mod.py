@@ -7,9 +7,10 @@ try:
     import requests
 except Exception as f:
     print(f)
-    print("Instalando.......")
+    print("Instalando dependencias espera un momento por favor....\n")
     os.system("pip install mechanicalsoup")
     os.system("pip install lxml")
+    os.system("pip install rqeuests")
 import mechanicalsoup
 import requests 
 import lxml.html as html
@@ -21,8 +22,7 @@ fin = "\033[0m"
 
 
 
-
-def verifi(text: str) -> bool: #Si retorna False, se debe cambiar la expresion xpath
+def total(text:str) -> int:
     try:
         numero=[]
   
@@ -38,28 +38,8 @@ def verifi(text: str) -> bool: #Si retorna False, se debe cambiar la expresion x
             except:
                 pass
         return int(numero[0])
-    except:
-        return False
-
-
-
-
-
-def total(text:str) -> int:
-    numero=[]
-  
-    for i in text:
-        e = text.replace("\n", "")
-    e = text.replace("\v", "")
-    e = text.replace(",", "")
-    
-    for j in e.split():
-        try:
-            int(j)
-            numero.append(j)
-        except:
-            pass
-    return int(numero[0])
+    except IndexError:return False
+        
 
 
 def others(link, search) -> list:
@@ -103,7 +83,7 @@ class searchGitt():
         self.resp = parser.xpath(self.links)
         tot = parser.xpath('//div[@class="d-flex flex-column flex-md-row flex-justify-between border-bottom pb-3 position-relative"]/h3/text()')
         if tot:
-            if verifi(tot[0]) == False:
+            if total(tot[0]) == False:
                 tot = parser.xpath('//span[@class="v-align-middle"]//text()')
                 self.totalRepos = total(tot[0])
             else:
