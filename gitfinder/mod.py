@@ -10,7 +10,7 @@ except Exception as f:
     print("Instalando dependencias espera un momento por favor....\n")
     os.system("pip install mechanicalsoup")
     os.system("pip install lxml")
-    os.system("pip install rqeuests")
+    os.system("pip install requests")
 import mechanicalsoup
 import requests 
 import lxml.html as html
