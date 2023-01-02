@@ -84,6 +84,10 @@ def main() -> None:
             gitt.secondPage()
             input("Preciona enter para volver: ")
             main()
+        else:
+            gitt.secondPage()
+            input("preciona enter para volver: ")
+            main()
 
     
 
